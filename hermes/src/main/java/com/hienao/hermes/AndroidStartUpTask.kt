@@ -3,8 +3,23 @@ package com.hienao.hermes
 import android.content.Context
 
 interface AndroidStartUpTask<T> : StartUpTask<T> {
+    /**
+     * 是否从UI线程启动
+     */
     fun callOnUIThread() = true
+
+    /**
+     * 是否阻塞UI线程
+     */
     fun blockUIThread() = false
-    fun call(context: Context):T
+
+    /**
+     * 执行任务内容
+     */
+    fun call(context: Context):Unit
+
+    /**
+     * 前置依赖任务
+     */
     fun dependences():MutableList<Class<out StartUpTask<*>>> = mutableListOf()
 }
