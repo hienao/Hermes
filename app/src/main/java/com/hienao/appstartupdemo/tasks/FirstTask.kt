@@ -5,7 +5,7 @@ import android.util.Log
 import com.hienao.hermes.AndroidStartUpTask
 
 class FirstTask : AndroidStartUpTask<Boolean> {
-    override fun call(context: Context){
-        Log.i("TEST","call:"+this.javaClass.name)
+    override suspend fun call(context: Context?):Boolean{
+        return true
     }
 }

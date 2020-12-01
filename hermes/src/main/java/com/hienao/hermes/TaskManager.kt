@@ -2,6 +2,7 @@ package com.hienao.hermes
 
 import android.content.Context
 
+
 class TaskManager private constructor(builder: Builder) {
     private var taskList: MutableList<AndroidStartUpTask<*>> = mutableListOf()
     private var context: Context? = null
@@ -28,5 +29,9 @@ class TaskManager private constructor(builder: Builder) {
     fun start() {
         //1.把列表中的任务及依赖绘制有向无环图，进行拓扑排序，找出执行顺序放入执行队列
         //2.从执行队列中获取到排序后的任务，进行执行
+        for (task in taskList){
+            TaskExecutor.executeTask(task, this@TaskManager.context, finishTaskMap)
+        }
     }
+
 }
