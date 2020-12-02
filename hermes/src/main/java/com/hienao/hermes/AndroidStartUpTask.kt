@@ -9,6 +9,11 @@ interface AndroidStartUpTask<T> : StartUpTask<T> {
     fun callOnUIThread() = true
 
     /**
+     * 是否阻塞UI线程
+     */
+    fun blockUIThread() = false
+
+    /**
      * 执行任务内容
      */
     suspend fun call(context: Context?):Boolean
